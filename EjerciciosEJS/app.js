@@ -27,6 +27,11 @@ app.post('/submit2', (req, res) => {
     res.render('resultado2', { perimetro, area })
 })
 
+app.post('/submit3', (req, res) => {
+    const {cal1, cal2, cal3, cal4} = req.body
+    
+})
+
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
