@@ -6,7 +6,7 @@
     <title>Formulario</title>
 </head>
 <body>
-    <h1>Formulario de Contacto</h1>
+    <h1>Formulario: </h1>
     <form action="/submit" method="POST">
         <p>Cual es tu nombre?</p>
         <label for="nombre">Nombre:</label>
@@ -18,6 +18,53 @@
         <p>Cual es el radio del circulo?</p>
         <label for="radio">Radio:</label>
         <input type="text" id="radio" name="radio" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+    <form action="/submit3" method="POST">
+        <p>Dame las calificaciones</p>
+        <label for="cal1">Primer calificacion:</label>
+        <input type="text" id="cal1" name="cal1" required>
+        <br>
+        <label for="cal2">Segunda calificacion:</label>
+        <input type="text" id="cal2" name="cal2" required>
+        <br>
+        <label for="cal3">Tercera calificacion:</label>
+        <input type="text" id="cal3" name="cal3" required>
+        <br>
+        <label for="cal4">Cuarta calificacion:</label>
+        <input type="text" id="cal4" name="cal4" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+    <form action="/submit4" method="POST">
+        <p>Introduce el numero en centimetros</p>
+        <label for="cm">CM: </label>
+        <input type="text" id="cm" name="cm" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+    <form action="/submit5" method="POST">
+        <label for="cata">Dame el cateto a</label>
+        <input type="text" id="cata" name="cata" required>
+        <br>
+        <label for="catb">Dame el cateto b</label>
+        <input type="text" id="catb" name="catb" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+    <form action="/submit6" method="POST">
+        <label for="hora">Dame la hora actual del reloj</label>
+        <input type="text" id="hora" name="hora" required>
+        <br>
+        <label for="horaMas">Dame un numero entero de horas</label>
+        <input type="text" name="horaMas" id="horaMas" required>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
+    <form action="/submit7" method="POST">
+        <label for="edad">Dame tu edad</label>
+        <input type="text" id="edad" name="edad" required>
         <br>
         <button type="submit">Enviar</button>
     </form>
