@@ -72,6 +72,52 @@ app.post('/submit7', (req, res) => {
 
     res.render('resultado7', {decada, lustro, anio, mes, semana, dias, horas, minutos})
 })
+app.post('/submit8', (req, res) => {
+    const { lado } = req.body
+    let area = Math.pow(parseFloat(lado), 2)
+
+    res.render('resultado8', {lado, area})
+})
+app.post('/submit9', (req, res) => {
+    const { base, altura } = req.body
+    let area = (parseFloat(base) * parseFloat(altura)) / 2.0
+
+    res.render('resultado9', {base, altura, area})
+})
+
+app.post('/submit10', (req, res)  => {
+    let promedio = (19 + 17 + 21 + 9 + 12 + 7) / 6
+    res.render('resultado10', { promedio })
+})
+
+app.post('/submit11', (req, res) => {
+    const { kg } = req.body
+    let lb = parseFloat(kg) * 2.2
+
+    res.render('resultado11', { kg, lb })
+})
+
+app.post('/submit12', (req, res) => {
+    const {n1, n2} = req.body
+    let suma, resta, mult, div, n1h, n2h
+    n1h = parseFloat(n1)
+    n2h = parseFloat(n2)
+
+    suma = n1h + n2h
+    resta = n1h - n2h
+    mult = n1h * n2h
+    div = n1h / n2h
+
+    res.render('resultado12', {n1, n2, suma, resta, mult, div})
+    
+})
+
+app.post('submit13', (req, res) => {
+    const {horas} = req.body
+    
+})
+
+
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
