@@ -112,12 +112,57 @@ app.post('/submit12', (req, res) => {
     
 })
 
-app.post('submit13', (req, res) => {
-    const {horas} = req.body
-    
+app.post('/submit13', (req, res) => {
+    const {hr} = req.body
+    let sal, com, salcom, ims, ispt, salnet, hrH
+    hrH = parseFloat(hr)
+
+    sal = hrH * 50
+    com = sal * 0.02
+    salcom = sal + com
+    ims = salcom * 0.015
+    ispt = salcom * 0.012
+    salnet = salcom - (ims + ispt)
+
+    res.render('resultado13', {hr, sal, com, ims, salcom, ispt, salnet})
 })
 
+app.post('/submit14', (req, res) => {
+    const {pies} = req.body
+    let metros = parseFloat(pies) / 3.2808
+    res.render('resultado14', { pies, metros})
+})
 
+app.post('/submit15', (req, res) => {
+    const { pulg } = req.body
+    let metro = parseFloat(pulg) / 39.370
+
+    res.render('resultado15', { pulg, metro})
+})
+
+app.post('/submit16', (req, res) => {
+    const { pies } = req.body
+    let pulg = parseFloat(pies) * 12.0
+
+    res.render('resultado16', { pies, pulg})
+})
+
+app.post('/submit17', (req, res) => {
+    const {gln} = req.body
+    let lt = parseFloat(gln) / 0.21997
+
+    res.render('resultado17', {gln, lt})
+})
+
+app.post('/submit18', (req, res) => {
+    const {gc} = req.body
+    let gf = (parseFloat(gc) * 1.800) + 32.00
+
+    res.render('resultado18', {gc, gf})
+})
+app.post('/submit19', (req, res) => {
+    res.render('resultado19')
+})
 // Iniciar el servidor
 app.listen(port, () => {
     console.log(`Servidor corriendo en http://localhost:${port}`);
