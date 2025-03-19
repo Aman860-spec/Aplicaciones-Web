@@ -4,11 +4,10 @@ const formRoutes = require('./routes/formRoutes');
 
 const app = express();
 const port = 3000;
-// test
-// Middleware para parsear el cuerpo de las solicitudes
-app.use(bodyParser.urlencoded({ extended: true }));
 
-// Servir archivos estáticos desde la carpeta "public"
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static('public'));
 
 // Usar las rutas definidas en formRoutes.js

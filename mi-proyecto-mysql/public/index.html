@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario</title>
+  <title>CRUD con Node.js y MySQL</title>
 </head>
 <body>
-  <h1>Formulario de contacto</h1>
-  <form action="/enviar-formulario" method="POST">
+  <h1>CRUD con Node.js y MySQL</h1>
+
+  <!-- Formulario para crear registros -->
+  <h2>Crear Registro</h2>
+  <form id="form-crear">
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" required>
     <br>
@@ -17,7 +20,68 @@
     <label for="mensaje">Mensaje:</label>
     <textarea id="mensaje" name="mensaje" required></textarea>
     <br>
-    <button type="submit">Enviar</button>
+    <button type="submit">Crear</button>
   </form>
+
+  <!-- Lista de registros -->
+  <h2>Registros Existentes</h2>
+  <ul id="lista-registros"></ul>
+
+  <!-- Script para manejar el CRUD desde el frontend -->
+  <script>
+    // Función para cargar y mostrar los registros
+    async function cargarRegistros() {
+      const response = await fetch('/formularios');
+      const registros = await response.json();
+      const lista = document.getElementById('lista-registros');
+      lista.innerHTML = registros.map(registro => `
+        <li>
+          ID: ${registro.id} | Nombre: ${registro.nombre} | Email: ${registro.email} | Mensaje: ${registro.mensaje}
+          <button onclick="eliminarRegistro(${registro.id})">Eliminar</button>
+          <button onclick="editarRegistro(${registro.id})">Editar</button>
+        </li>
+      `).join('');
+    }
+
+    // Función para crear un registro
+    document.getElementById('form-crear').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const email = document.getElementById('email').value;
+      const mensaje = document.getElementById('mensaje').value;
+
+      await fetch('/formularios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, email, mensaje })
+      });
+
+      cargarRegistros();
+    });
+
+    // Función para eliminar un registro
+    async function eliminarRegistro(id) {
+      await fetch(`/formularios/${id}`, { method: 'DELETE' });
+      cargarRegistros();
+    }
+
+    // Función para editar un registro (puedes implementarla si lo necesitas)
+    async function editarRegistro(id) {
+      const nuevoNombre = prompt('Nuevo nombre:');
+      const nuevoEmail = prompt('Nuevo email:');
+      const nuevoMensaje = prompt('Nuevo mensaje:');
+
+      await fetch(`/formularios/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre: nuevoNombre, email: nuevoEmail, mensaje: nuevoMensaje })
+      });
+
+      cargarRegistros();
+    }
+
+    // Cargar registros al iniciar la página
+    cargarRegistros();
+  </script>
 </body>
 </html>
