@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.render('index')
 })
-
+// New thing
 // Ruta para manejar el envío del formulario
 app.post('/submit', (req, res) => {
     const { nombre} = req.body;
