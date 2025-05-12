@@ -1,3 +1,3 @@
 "use strict";
-let firstName = "Abdiel";
-console.log(firstName);
+const json = JSON.parse("55");
+console.log(typeof json);
