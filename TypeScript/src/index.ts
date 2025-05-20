@@ -1,3 +1,6 @@
-const json = JSON.parse("55")
+let nombre: String;
 
-console.log(typeof json)
+nombre = "Abdiel"
+
+
+console.log(nombre);
